@@ -1,8 +1,16 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
+import { existsSync } from 'fs';
 
 const distDir = 'dist/client';
 const indexPath = join(distDir, 'index.html');
+const nojekyllPath = join(distDir, '.nojekyll');
+
+// Create .nojekyll file to prevent Jekyll from processing the site
+if (!existsSync(nojekyllPath)) {
+  writeFileSync(nojekyllPath, '', 'utf-8');
+  console.log('✓ Created .nojekyll file');
+}
 
 let content = readFileSync(indexPath, 'utf-8');
 
