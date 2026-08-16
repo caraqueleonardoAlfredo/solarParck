@@ -5,7 +5,7 @@ import "./globals.css";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-const baseUrl = "https://caraqueleonardoAlfredo.github.io/solarParck/";
+const baseUrl = "https://caraqueleonardoAlfredo.github.io/solarPark/";
 const ogImageUrl = new URL("./og-iniciativa.png", baseUrl).href;
 
 export const metadata: Metadata = {
