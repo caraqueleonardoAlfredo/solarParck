@@ -9,15 +9,22 @@
   <link rel="icon" href="./favicon.png" type="image/png" />
   <link rel="shortcut icon" href="./favicon.png" type="image/png" />
   <link rel="manifest" href="./manifest.json" />
-  <script>
-    // Redirect to the app entry point
-    if (!window.location.pathname.includes('/solarParck')) {
-      window.location.href = window.location.origin + '/solarParck/';
-    }
-  </script>
 </head>
 <body>
   <div id="root"></div>
-  <script type="module" src="./_next/static/chunks/index-*.js"></script>
+  <script type="module">
+    (async () => {
+      try {
+        const manifest = await fetch('./vinext-client-entry-manifest.json').then(r => r.json());
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.src = './' + manifest.appBrowserEntry;
+        document.body.appendChild(script);
+      } catch (e) {
+        console.error('Failed to load app:', e);
+        document.body.innerHTML = '<p>Error loading application</p>';
+      }
+    })();
+  </script>
 </body>
 </html>
